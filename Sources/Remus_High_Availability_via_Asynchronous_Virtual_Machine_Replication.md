@@ -13,6 +13,13 @@
 - transparency: the high availability can be provided without modifying the operating system which might not even have source code available
 - seamless failure recovery: no externally visible state should ever be lost, and failure recovery should proceed rapidly enough that it appears as nothing more than temporary packet loss
 
+### Failure Model
+
+- The fail-stop failure of any single machine is tolerable.
+- If both the primary and the backup machine hosts fail concurrently, the protected system's data will be left in a crash consistent state.
+- No output will be made externally visible until the associated system state has been committed to the replica.
+
+
 ### Approach
 
 - The system is based on a modified version of virtual machine.
@@ -25,6 +32,7 @@
 - In addition to memory and CPU state, the disk state between primary and backup machine also needs to be consistent. Therefore, if a write happens on primary machine, the write is transmitted to the backup machine, and the backup machine holds the write in memory buffer, then actually writes to the disk when the checkpoint message from the primary machine comes.
 - The virtual machine does not actually run on the backup machine. Instead, it only tries to keep a state. Hence the backup only consumes small resouce, and one backup machine can be used for backup of multiple primary machines.
 - When the primary machine tries to capture all changes, it pauses its own operation and copies all changes to a separate location. Then the primary machine resumes operation and also sends the image to the backup machine.
+- The output from primary machine to the client is buffered in memory, and is called "network buffer" in this paper since it buffers the network transmission from primary machine to the client. The buffer contains a queue: before the primary machine is allowed to resume execution after a checkpoint, the network buffer puts a CHECKPOINT message in the queue, which serves as a barrier in the queue preventing any subsequent packets from begin released until a corresponding release message is received. When the checkpoint has been acknowledged by the backup machine, the queue receives a RELEASE message, at which point it begins to dequeue the traffic to the clients up to the barrier.
 
 ### Detecting Failure
 
