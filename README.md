@@ -6,4 +6,4 @@
 
 - [Remus: High Availability via Asynchronous Virtual Machine Replication](Papers/Remus_High_Availability_via_Asynchronous_Virtual_Machine_Replication.pdf) by B. Cully et al, 2008. [Notes](Notes/Remus_High_Availability_via_Asynchronous_Virtual_Machine_Replication.pdf)
 
-
+- [Flat Datacenter Storage](Papers/Flat_Datacenter_Storage.pdf) by E. B. Nightingale et al, 2012. [Notes](Notes/Flat_Datacenter_Storage.pdf)
