@@ -9,3 +9,5 @@
 - [Flat Datacenter Storage](Papers/Flat_Datacenter_Storage.pdf) by E. B. Nightingale et al, 2012. [Notes](Notes/Flat_Datacenter_Storage.pdf)
 
 - [Paxos Made Simple](Papers/Paxos_Made_Simple.pdf) by L. Lamport, 2001. [Notes](Notes/Paxos_Made_Simple.pdf)
+
+- [In Search of an Understandable Consensus Algorithm](Papers/In_Search_of_an_Understandable_Consensus_Algorithm.pdf) by D. Ongaro and J. Ousterhout, 2014. [Notes](Notes/In_Search_of_an_Understandable_Consensus_Algorithm.pdf)
